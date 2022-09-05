@@ -1,6 +1,6 @@
 package controller;
 
-import views.MenuLecturers;
+import views.MenuAdmin;
 import views.MenuStudent;
 import model.Account;
 import views.Main;
@@ -128,7 +128,7 @@ public class AccountManager implements Serializable {
         Account account = new Account(name, password);
         if (checkAdmin(account)) {
             System.out.println("Dang nhap thanh cong , xin chao Giang Vien!");
-            MenuLecturers.MenuAdmin();
+            MenuAdmin.MenuAdmin();
         } else {
             checkLogin(account);
         }

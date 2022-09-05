@@ -5,7 +5,7 @@ import controller.AccountManager;
 
 import java.util.Scanner;
 
-public class MenuLecturers {
+public class MenuAdmin {
     public static void MenuAdmin() {
         Scanner scanner = new Scanner(System.in);
         StudentManager studentManager = new StudentManager();
