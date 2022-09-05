@@ -1,18 +1,17 @@
-package menu;
+package views;
 
-import main.Main;
-import sinhvien.QuanLySinhVien;
-import taikhoan.QuanLyTaiKhoan;
+import controller.StudentManager;
+import controller.AccountManager;
 
 import java.util.Scanner;
 
-public class MenuGiangVien {
-    public static void MenuGV() {
+public class MenuLecturers {
+    public static void MenuAdmin() {
         Scanner scanner = new Scanner(System.in);
-        QuanLySinhVien SV = new QuanLySinhVien();
-        QuanLyTaiKhoan TK = new QuanLyTaiKhoan();
-        SV.docTaiLieu();
-        TK.docTaiLieu();
+        StudentManager studentManager = new StudentManager();
+        AccountManager accountManager = new AccountManager();
+        studentManager.readData();
+        accountManager.readData();
         int chon = -1;
         do {
             System.out.println(" >>>>>>>>   Giang Vien  <<<<<<<");
@@ -39,19 +38,19 @@ public class MenuGiangVien {
             }
 
             switch (chon) {
-                case 1 -> SV.themSinhVien(scanner);
-                case 2 -> SV.hienTatCaSinhVien();
-                case 3 -> SV.hienSinhVienById(scanner);
-                case 4 -> SV.suaSinhVienByName(scanner);
-                case 5 -> SV.suaSinhVienById(scanner);
-                case 6 -> SV.xoaSinhVienByNam(scanner);
-                case 7 -> SV.xoaSinhVienById(scanner);
-                case 8 -> SV.timSinhVienByName(scanner);
-                case 9 -> SV.timSinhVienById(scanner);
-                case 10 -> SV.sapXepById();
-                case 11 -> SV.sapXepByDTB();
-                case 12 -> TK.hienTaiKhoan();
-                case 13 -> TK.xoaTaiKhoan(scanner);
+                case 1 -> studentManager.addStudent(scanner);
+                case 2 -> studentManager.showAllStudent();
+                case 3 -> studentManager.showStudentById(scanner);
+                case 4 -> studentManager.editStudentByName(scanner);
+                case 5 -> studentManager.editStudentById(scanner);
+                case 6 -> studentManager.deleteStudentByName(scanner);
+                case 7 -> studentManager.deleteStudentById(scanner);
+                case 8 -> studentManager.findStudentByName(scanner);
+                case 9 -> studentManager.findStudentById(scanner);
+                case 10 -> studentManager.sortById();
+                case 11 -> studentManager.sortBymediumScore();
+                case 12 -> accountManager.showAccount();
+                case 13 -> accountManager.deleteAccount(scanner);
                 case 0 -> Main.MenuMain();
             }
         }

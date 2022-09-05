@@ -1,18 +1,17 @@
-package menu;
+package views;
 
-import main.Main;
-import sinhvien.QuanLySinhVien;
-import taikhoan.QuanLyTaiKhoan;
+import controller.StudentManager;
+import controller.AccountManager;
 
 import java.util.Scanner;
 
-public class MenuSinhVien {
-    public static void MenuSinhVien() {
+public class MenuStudent {
+    public static void MenuStudent() {
         Scanner scanner = new Scanner(System.in);
-        QuanLySinhVien SV = new QuanLySinhVien();
-        QuanLyTaiKhoan TK = new QuanLyTaiKhoan();
-        TK.docTaiLieu();
-        SV.docTaiLieu();
+        StudentManager studentManager = new StudentManager();
+        AccountManager accountManager = new AccountManager();
+        accountManager.readData();
+        studentManager.readData();
         int chon = -1;
         do {
             System.out.println(" >>>>>>>>   Sinh Vien  <<<<<<<");
@@ -34,14 +33,14 @@ public class MenuSinhVien {
             }
 
             switch (chon) {
-                case 1 -> SV.hienTatCaSinhVien();
-                case 2 -> SV.timSinhVienById(scanner);
-                case 3 -> SV.timSinhVienByName(scanner);
-                case 4 -> SV.sapXepById();
-                case 5 -> SV.sapXepByDTB();
-                case 6 -> SV.timSinhVienMax();
-                case 7 -> TK.doiTenDangNhap (scanner);
-                case 8 -> TK.doiMatKhau(scanner);
+                case 1 -> studentManager.showAllStudent();
+                case 2 -> studentManager.findStudentById(scanner);
+                case 3 -> studentManager.findStudentByName(scanner);
+                case 4 -> studentManager.sortById();
+                case 5 -> studentManager.sortBymediumScore();
+                case 6 -> studentManager.findStudentMax();
+                case 7 -> accountManager.changeLoginName(scanner);
+                case 8 -> accountManager.changePassword(scanner);
                 case 0 -> Main.MenuMain();
             }
         }
