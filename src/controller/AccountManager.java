@@ -121,17 +121,24 @@ public class AccountManager implements Serializable {
     }
 
     public void login(Scanner scanner) {
-        System.out.print("Ten dang nhap: ");
-        String name = scanner.nextLine();
-        System.out.print("Mat khau dang nhap: ");
-        String password = scanner.nextLine();
-        Account account = new Account(name, password);
-        if (checkAdmin(account)) {
-            System.out.println("Dang nhap thanh cong , xin chao Giang Vien!");
-            MenuAdmin.MenuAdmin();
-        } else {
-            checkLogin(account);
+        int count = 0;
+        do {
+            System.out.print("Ten dang nhap: ");
+            String name = scanner.nextLine();
+            System.out.print("Mat khau dang nhap: ");
+            String password = scanner.nextLine();
+            Account account = new Account(name, password);
+            if (checkAdmin(account)) {
+                System.out.println("Dang nhap thanh cong , xin chao Amdin!");
+                MenuAdmin.MenuAdmin();
+            } else {
+                checkLogin(account);
+            }
+            count++;
         }
+            while (count < 3) ;
+            System.err.println("Nhap sai qua nhieu, vui long chay lai chuong trinh");
+            System.exit(0);
     }
 
     public void showAccount() {
